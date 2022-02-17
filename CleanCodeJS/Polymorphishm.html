@@ -1,0 +1,90 @@
+<html>
+    <script>
+    class Employee
+    {
+        getSalary()
+        {
+            console.log("Employee get salary");
+            return 10;
+        }
+        getLeave()
+        {
+            console.log("Employee get leave");
+            return 10;
+        }
+    }
+    class CommissionPayEmployee extends Employee
+    {
+        getSalary()
+        {
+            console.log("CommissionPayEmployee get salary");
+            return 20;
+        }
+        getLeave()
+        {
+            console.log("CommissionPayEmployee get leave");
+            return 10;
+        }
+    }
+    class HourlyPayEmployee extends Employee
+    {
+        getSalary()
+        {
+            console.log("HourlyPayEmployee get salary");
+            return 15;
+        }
+        getLeave()
+        {
+            console.log("HourlyPayEmployee get leave");
+            return 10;
+        }
+    }
+    class SalariedPayEmployee extends Employee
+    {
+        getSalary()
+        {
+            console.log("SalariedPayEmployee get salary");
+            return 25;
+        }
+        getLeave()
+        {
+            console.log("SalariedPayEmployee get leave");
+            return 10;
+        }
+    }
+    class ContractBasedEmployee extends Employee
+    {
+        getSalary()
+        {
+            console.log("ContractBasedEmployee get salary");
+            return 25;
+        }
+        getLeave()
+        {
+            console.log("ContractBasedEmployee get leave");
+            return 10;
+        }
+    }
+    class Director 
+    {
+        getSalary()
+        {
+            console.log("Director get salary");
+            return 25;
+        }
+    }
+    function computeSalary(employee)
+    {
+        let salary = employee.getSalary();
+        console.log("Salary is ",salary);
+    }
+    function computeLeave(employee)
+    {
+        let leave = employee.getLeave();
+        console.log("Leave is ",leave);
+    }
+    let emp = new Director();
+    computeSalary(emp);
+    //computeLeave(emp);
+    </script>
+</html>
