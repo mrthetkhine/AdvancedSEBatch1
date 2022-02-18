@@ -1,0 +1,36 @@
+<html>
+    <script>
+        function div(a,b)
+        {
+            if(b==0)
+            {
+                throw Error("B is zero");
+            }
+            return a/b;
+        }
+        //console.log("Div ",div(1,0));
+        //console.log("Done");
+
+        function divPromiseVersion(a,b)
+        {
+            if(b==0)
+            {
+                return Promise.reject("B is zero");
+            }
+            return Promise.resolve(a/b);
+        }
+        //console.log("Div ",div(1,0));
+        console.log("Done");
+        divPromiseVersion(10,10)
+            .then(data=> {
+                    console.log("Ok data ",data);
+                    throw Error("Error");
+                }
+                ,error=>{
+                    console.log("Error ",error)
+                    throw Error("Next error")
+                    })
+            .then(data=> console.log("Next step ",data),
+                error=> console.log("Next Error case ",error))
+    </script>
+</html>
