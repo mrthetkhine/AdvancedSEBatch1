@@ -1,0 +1,43 @@
+<html>  
+    <script>
+        let stack = {
+            data: [],
+            top:-1
+        };
+
+        function push(stack,element)
+        {
+            stack[++stack.top]=(element);
+        }
+        function pop(stack)
+        {
+            return stack[ stack.top--];
+        }
+
+        
+        push(stack,10);
+        push(stack,20);
+
+        console.log("Pop ",pop(stack));
+
+        class Stack
+        {
+            data = [];
+            top = -1;
+            push(element)
+            {
+                this.data[++this.top] = element;
+            }
+            pop()
+            {
+                return this.data[this.top--];
+            }
+        }
+        let stackOne = new Stack();
+        stackOne.push(0);
+        stackOne.push(2);
+        stackOne.push(3);
+
+        console.log("Stack pop ",stackOne.pop());
+    </script>
+</html>

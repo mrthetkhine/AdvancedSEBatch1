@@ -1,0 +1,21 @@
+<html>  
+    <button type="button" id="btnClean">
+        Clean
+    </button>
+    <script>
+
+        let arr = new Array(10000000);
+        let b = arr;
+        let btnClean = document.getElementById("btnClean");
+        btnClean.addEventListener("click",function()
+        {
+            arr = null;
+        });
+        function one()
+        {
+            let a = 10;
+        }
+        one();
+        console.log("Done");
+    </script>
+</html>
