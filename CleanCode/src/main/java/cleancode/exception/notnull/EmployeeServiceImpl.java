@@ -27,6 +27,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 	{
 		EmployeeService service = new EmployeeServiceImpl();
 		Optional<Employee> employee  = service.getEmployeeById(-1);
+		System.out.println("Employee "+employee);
 		Optional<String> result = (Optional<String>)(employee.flatMap(emp-> Optional.of("Mr" +emp.name)));
 		if(result.isPresent())
 		{
