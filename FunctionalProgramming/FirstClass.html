@@ -1,0 +1,28 @@
+<html>
+    <script>
+      function hello()
+      {
+          console.log("Hello invoked");
+      }
+      //Can be stored in variable
+      let h = hello;
+      h();
+
+      //Rule
+      // Can passed to function as parameter
+      function execute(func)
+      {
+        console.log('Executed function ');
+        func();
+      }
+      execute(hello);
+      console.log("Type of hello ",typeof hello);
+
+      function getFunc()
+      {
+          console.log('Get function invoked');
+          return hello;
+      }
+      getFunc()();
+    </script>
+</html>

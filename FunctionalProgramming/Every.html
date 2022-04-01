@@ -1,0 +1,32 @@
+<html>
+    <script>
+     
+      
+      let arr = [10,130,30];
+      let isEven = (x) => x % 2 == 0;
+      let allIsEven = arr.every(isEven);
+
+      console.log('all is even ',allIsEven);
+      console.log('some is even ',arr.some(isEven));
+      function every(arr,predFun)
+      {
+          let result = true;
+          for(let a of arr)
+          {
+              result = result && predFun(a);
+          }  
+          return result;
+      }
+      function some(arr,predFun)
+      {
+          let result = true;
+          for(let a of arr)
+          {
+              result = result || predFun(a);
+          }  
+          return result;
+      }
+      console.log('is all even ',every(arr,isEven));
+      console.log('is some even ',some(arr,isEven));
+    </script>
+</html>

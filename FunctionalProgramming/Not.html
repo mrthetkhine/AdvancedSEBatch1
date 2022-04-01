@@ -1,0 +1,18 @@
+<html>
+    <script>
+
+      function not(predicate)
+      {
+          return function(x)
+          {
+              return !predicate(x);
+          }
+      }
+
+      let isEven = (x) => x % 2 == 0;
+      let isOdd = not(isEven);
+
+      console.log('IsOdd 3',isOdd(3));
+      console.log('IsOdd 4',isOdd(4));
+    </script>
+</html>

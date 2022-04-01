@@ -1,0 +1,20 @@
+<html>
+    <script>
+
+      const unless = (predicate,fn)=>{
+        if(!predicate)
+            fn();
+      }
+      function times(num,fn)
+      {
+        for(let i=0;i< num;i++)
+        {
+            fn(i);
+        }
+      }
+      times(5,function(n){
+          unless( n %2,()=>console.log(n));
+      });
+      
+    </script>
+</html>

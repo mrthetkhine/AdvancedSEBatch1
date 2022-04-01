@@ -1,0 +1,18 @@
+<html>
+    <script>
+      function outer()
+      {
+        let counter = 0;
+
+        function inc()
+        {
+            return counter ++;
+        }
+        return inc;
+      }
+      let inc = outer();
+      console.log('Inc ',inc());
+      console.log('Inc ',inc());
+      console.log('Inc ',inc());
+    </script>
+</html>

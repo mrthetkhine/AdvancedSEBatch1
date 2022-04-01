@@ -1,0 +1,69 @@
+<html>
+    <script>
+     
+      
+      let arr = [10,130,30];
+      arr.sort((a,b)=> a-b);
+      console.log('Arr ',arr);
+
+      let obj = {
+        name : "One",
+        age : 15,
+      };
+      let objArr = [{
+          name : "One",
+          age : 13,
+      },
+      {
+          name : "Two",
+          age : 15,
+      },
+      {
+          name : "Three",
+          age : 50,
+      },
+      {
+          name : "Four",
+          age : 10,
+      },
+    ];
+    objArr.sort((a,b)=>{
+        if( a['name'] == b['name'] )
+        {
+            return 0;
+        }
+        else if( a['name']> b['name'])
+        {
+            return 1;
+        }
+        else
+        {
+            return -1;
+        }
+    });
+    console.log('ObjArr ',objArr);
+
+    const sortBy=(property)=>{
+        return (a,b)=>{
+            if( a[property] == b[property])
+            {
+                return 0;
+            }
+            else if( a[property] > b[property])
+            {
+                return 1;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+    };
+    //let comparator = sortBy('age');
+    objArr.sort(sortBy('age'));
+    console.log('Sorted by Age ',objArr);
+
+    objArr.sort(sortBy('name'));
+    console.log('Sorted by name ',objArr);
+    </script>
+</html>
