@@ -1,0 +1,25 @@
+<html>
+    <script>
+        function once(fn)
+        {
+            let executed = false;
+            return function()
+            {
+                if(!executed)
+                {
+                    executed = true;
+                    return fn();
+                }
+            }
+        }
+        function confirmClick ()
+        {
+            console.log('Confirmed Clicked');
+        }
+        confirmClick = once(confirmClick);
+        confirmClick();
+        confirmClick();
+        confirmClick();
+
+    </script>
+</html>

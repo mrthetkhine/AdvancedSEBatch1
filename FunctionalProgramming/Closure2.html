@@ -1,0 +1,41 @@
+<html>
+    <script>
+     
+      function outer()
+      {
+          let counter = 0;
+          return function inner()
+          {
+            return counter ++;
+          }
+      }
+      let counter = outer();
+      console.log('Counter ',counter, ' Type ',typeof counter);
+      console.log('Inc ',counter());
+      console.log('Inc ',counter());
+
+      function Stack()
+      {
+          let data = [];
+
+          function push(element)
+          {
+              data.push(element);
+          }
+          function pop()
+          {
+              return data.pop();
+          }
+          return {
+              push,
+              pop,
+          };
+      }
+      let stack1 = Stack();
+      stack1.push(100);
+      stack1.push(200);
+      console.log('Pop ',stack1.pop());
+      console.log('Pop ',stack1.pop());
+      console.log('Data ',stack1.data);
+    </script>
+</html>

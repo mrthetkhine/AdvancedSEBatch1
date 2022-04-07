@@ -1,0 +1,38 @@
+<html>
+    <script>
+     function add(x,y)
+     {
+
+     }
+     console.log('Add length ',add.length);
+     const unary = (fn) => fn.length === 1
+        ? fn
+        : (x) => fn(x);
+     function unary2(fn)
+     {
+        if(fn.length === 1)
+        {
+            return fn;
+        }
+        else
+        {
+            return function(x)
+            {
+                return fn(x);
+            }
+        }
+     }   
+     console.log('Unary2 ',unary2(add).length);
+     let arr = [1,2,3];
+     let arr2 = arr.map(x=>x*2);
+     console.log('Arr2 ',arr2);
+
+     let arr3 = arr.map( unary(parseInt));
+     console.log('Arr3 ',arr3);
+
+     let arr4 = arr.map((value,index,arr)=>{
+         console.log('Value ',value, ' Index ',index, " Arr ",arr);
+         return value;
+     })
+    </script>
+</html>

@@ -1,0 +1,61 @@
+<html>
+    <script>
+     
+      function toUpper(str)
+      {
+         return str.toUpperCase();
+      }
+      function appendHi(str)
+      {
+          return str + " hi";
+      }
+      function prependMorning(str)
+      {
+          return "Morning "+ str;
+      }
+      function newFunc(str)
+      {
+          let x = toUpper(str);
+          let y = appendHi(x);
+          return y;
+      }
+      function compose(funA,funcB)
+      {
+          return function(x)
+          {
+              return funA(funcB(x));
+          }
+      }
+      console.log(appendHi(toUpper("hello")));
+      let twoFunc = compose(appendHi,toUpper);
+      console.log("TwoFun ",twoFunc('hello'));
+      console.log("new Func ",newFunc('hello'));
+
+      const compose2 = (...fns) => (value) => fns.reduceRight((acc, curr) => curr(acc), value);
+      
+
+      /*
+      const tap = (value) => (fn) => (
+            typeof(fn) === 'function' && fn(value),
+            console.log(value) )
+      */
+     function tap(fn)
+     {
+         return function(value)
+         {
+             return typeof(fn) === 'function' && fn(value);
+         }
+     }
+     function log(value)
+     {
+         console.log(value);
+         return value;
+     }
+
+     console.log('============');
+     //console.log('Tap',tap(log)("Hello"));
+     let logger = tap(log);
+     let upperHi = compose2(logger,appendHi,logger,prependMorning,logger,toUpper);
+      console.log("UpperHi ",upperHi('hello'));
+    </script>
+</html>
