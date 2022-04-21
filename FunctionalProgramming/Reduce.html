@@ -1,0 +1,48 @@
+<html>
+    <script>
+
+    //get sum of even number
+     let arr = [1,2,3,4,5,6];
+     let isEven = (num)=> num %2 == 0;
+     let evenArr = arr.filter(isEven);
+     console.log("Even array ",evenArr);
+     let sum = evenArr.reduce((a,b)=>{
+        console.log('A ',a, " b ",b);
+        return a + b;
+     });
+     console.log('Sum ',sum);
+
+     //get oldest male and add U to its name
+     let objArr = [
+         {
+             name: "TK",
+             age: 44,
+             gender: "male"
+         },
+         {
+             name: "Aung Aung",
+             age: 24,
+             gender: "male"
+         },
+         {
+             name: "Mya Mya",
+             age: 20,
+             gender: "female"
+         },
+         {
+             name: "Tin Tin",
+             age: 40,
+             gender: "female"
+         },
+         {
+             name: "Tin Aung",
+             age: 44,
+             gender: "male"
+         },
+     ];
+     let isMale = (obj)=>obj.gender=="male";
+     let oldestMale = objArr.filter(isMale)
+                            .reduce((a,b)=> a.age > b.age? a : b);
+     console.log('Oldest male ',oldestMale);
+    </script>
+</html>

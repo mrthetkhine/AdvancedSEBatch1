@@ -1,0 +1,30 @@
+<html>
+    <script>
+
+    function zip(leftArr,rightArr,fn)
+    {
+        let min = Math.min(leftArr.length,rightArr.length);
+        let results = [];
+        for(let i=0;i< min ;i++)
+        {
+            results.push(fn(leftArr[i],rightArr[i]));
+        }
+        return results;
+    }
+    let left = [1,2,3];
+    let right = [10,20,30];
+    let fn = (a,b) => a * b;
+    let results = zip(left,right,fn);
+    console.log("results ",results);
+
+    let booksNames = ["Java","JavaScript"];
+    let authors = ["Jame Gosling","Breden Erich"];
+    let booksObject = (name,author) =>({
+        name,
+        author
+    });
+    let booksArr = zip(booksNames,authors,booksObject);
+    console.log('Books Ar ',booksArr);
+
+    </script>
+</html>

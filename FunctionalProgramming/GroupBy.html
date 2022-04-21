@@ -1,0 +1,56 @@
+<html>
+    <script>
+
+   
+     //get oldest male and add U to its name
+     let objArr = [
+         {
+             name: "TK",
+             age: 44,
+             gender: "male"
+         },
+         {
+             name: "Aung Aung",
+             age: 24,
+             gender: "male"
+         },
+         {
+             name: "Mya Mya",
+             age: 20,
+             gender: "female"
+         },
+         {
+             name: "Tin Tin",
+             age: 40,
+             gender: "female"
+         },
+         {
+             name: "Tin Aung",
+             age: 44,
+             gender: "male"
+         },
+     ];
+
+     let groups = {};
+     for(let i=0;i< objArr.length;i++)
+     {
+         let obj = objArr[i];
+         if(groups[obj.gender]) //groups['male']
+         {
+            groups[obj.gender].push(obj);
+         }
+         else
+         {
+            groups[obj.gender] = [obj];
+         }
+     }
+     console.log("Groups ",groups);
+     let groupAccumulator = (group,obj)=>{
+         return group[obj.gender]? 
+                        (group[obj.gender].push(obj),group): 
+                        (group[obj.gender] =[obj],group);
+     }
+     groups = objArr.reduce(groupAccumulator,{});
+     console.log("Groups ",groups);
+    </script>
+</html>

@@ -1,0 +1,37 @@
+<html>
+    <script>
+
+     let arr = [1,2,3,4,5,6];
+     let isEven = (num)=> num %2 == 0;
+     let evenArr = arr.filter(isEven);
+     console.log("Arr ",arr);
+     console.log("Even Arr ",evenArr);
+
+     let objArr = [
+         {
+             name: "TK",
+             age: 37,
+             gender: "male"
+         },
+         {
+             name: "Aung Aung",
+             age: 24,
+             gender: "male"
+         },
+         {
+             name: "Mya Mya",
+             age: 20,
+             gender: "female"
+         },
+         {
+             name: "Tin Tin",
+             age: 40,
+             gender: "female"
+         },
+     ];
+     let isMale = (obj)=>obj.gender == 'male';
+     let maleList = objArr.filter(isMale)
+                          .map(obj=>obj.name)  ;
+     console.log("Male list ",maleList);
+    </script>
+</html>

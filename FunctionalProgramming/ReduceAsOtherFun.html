@@ -1,0 +1,43 @@
+<html>
+    <script>
+
+   
+     //get oldest male and add U to its name
+     let objArr = [
+         {
+             name: "TK",
+             age: 44,
+             gender: "male"
+         },
+         {
+             name: "Aung Aung",
+             age: 24,
+             gender: "male"
+         },
+         {
+             name: "Mya Mya",
+             age: 20,
+             gender: "female"
+         },
+         {
+             name: "Tin Tin",
+             age: 40,
+             gender: "female"
+         },
+         {
+             name: "Tin Aung",
+             age: 44,
+             gender: "male"
+         },
+     ];
+     let isMale = (obj)=>obj.gender=="male";
+     let toUpper = (str)=>str.toUpperCase();
+     let mapAccumalator = (arr,b)=> arr.concat( toUpper(b.name));    
+     let objArr2 = objArr.reduce(mapAccumalator,[] );
+     console.log('objArr2',objArr2);
+
+     let filterAccumalator = (arr,b)=> isMale(b)?arr.concat(b) : arr;
+     let maleList = objArr.reduce(filterAccumalator,[]);
+     console.log('Male list ',maleList);
+    </script>
+</html>

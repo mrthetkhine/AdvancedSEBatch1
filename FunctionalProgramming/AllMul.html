@@ -1,0 +1,17 @@
+<html>
+    <script>
+
+    //get sum of even number
+     let arr = [1,2,3,4,5,6];
+     let isEven = (num)=> num %2 == 0;
+     let evenArr = arr.filter(isEven);
+     console.log("Even array ",evenArr);
+
+     let sumFun = (a,b)=>{
+         console.log('A is ',a, " B is ",b);
+         return a +b
+    };
+     let sum = evenArr.reduce(sumFun,1);
+     console.log('Sum ',sum);
+     </script>
+</html>

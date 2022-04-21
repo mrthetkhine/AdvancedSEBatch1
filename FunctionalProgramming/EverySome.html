@@ -1,0 +1,21 @@
+<html>
+    <script>
+
+    let arr = [ 1,2,3,4,5];
+    let isEven = (num)=> num % 2 ==0;
+    let allIsEven = arr.every(isEven);
+    console.log('Is all even ',allIsEven);    
+
+    let someAreEven = arr.some(isEven);
+    console.log('Some are even ',someAreEven);
+
+    let sum = (a,b)=>{
+        console.log('A ',a, ' B ',b);
+        return a +b;
+    };
+    let total = arr.reduceRight(sum);
+    console.log('Total ',total);
+
+    console.log('Array.of ',Array.of(10));
+    </script>
+</html>
