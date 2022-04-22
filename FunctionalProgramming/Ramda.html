@@ -1,0 +1,38 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.28.0/ramda.js"></script>
+    <script>
+      function toUpper(str)
+      {
+         return str.toUpperCase();
+      }
+      function appendHi(str)
+      {
+          return str + " hi";
+      }
+      let newFunc = R.compose(toUpper,appendHi);
+      console.log("new Func ",newFunc("hello"));
+
+      newFunc = R.pipe(toUpper,appendHi);
+      console.log('Pipe ',newFunc('hello'));
+
+      let double = (x)=> x*x;
+      function sum(a)
+      {
+          return function(b)
+          {
+            console.log('A ',a, 'B ',b);
+            return a +b;
+          }
+          
+      }
+      let add3= sum(3);
+      console.log("Sum ",add3(5));
+      console.log("Sum ",add3(6));
+      let func2 = R.compose(add3,double);
+      console.log("Func2 ",func2(3));
+
+      let sum2 = (a,b) => a + b;
+      let addThree = R.curry(sum2)(3);
+      console.log("sum2(3) ", addThree(5));
+    </script>
+</html>

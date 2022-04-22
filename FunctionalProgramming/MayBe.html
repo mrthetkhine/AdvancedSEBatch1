@@ -1,0 +1,41 @@
+<html>
+    <script>
+     
+     function transform(str)
+     {
+         let x = str.toUpperCase();
+         let y = x+ ' hi';
+         return y;
+     }
+     let data = undefined;
+     //console.log("Transform ",transform(data));
+     console.log('Next line');
+
+     let MayBe = (x)=>({
+         map: function(fn)
+         {
+             return this.isNothing()? MayBe(null): MayBe(fn(x));
+         },
+         value()
+         {
+             return x;
+         },
+         isNothing()
+         {
+             return x === null || x===undefined;
+         }
+
+     });
+     MayBe.of = (x) =>{
+         return MayBe(x);
+     }
+     let toUpper =(str)=>str.toUpperCase();
+     let appendHi = (str)=>str +" hi";
+
+     let str = null;
+     let mayBeStr = MayBe(str);
+     let result = mayBeStr.map(toUpper)
+                          .map(appendHi);
+     console.log('Value ',result.value());  
+    </script>
+</html>

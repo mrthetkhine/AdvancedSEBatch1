@@ -1,0 +1,27 @@
+<html>
+    <script>
+     
+     let Container = (x)=>({
+         map: function(fn)
+         {
+             return Container(fn(x));
+         },
+         value()
+         {
+             return x;
+         }
+     });
+     Container.of = (x) =>{
+         return Container(x);
+     }
+
+     let inc = (x)=> x+1;
+     let double = (x)=> x * 2;
+     let box = Container.of(10);
+     console.log("Box ",box);
+     let result = box.map(inc)
+                     .map(double);
+     console.log("Result ",result.value());
+     console.log("box ",box.value());
+    </script>
+</html>
