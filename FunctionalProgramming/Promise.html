@@ -1,0 +1,12 @@
+<html>
+    <script>
+     let promise = Promise.resolve(10);
+     promise.then(x=>x*x)
+            .then(x=>console.log(x));
+
+    promise = Promise.reject("Failed error");
+    promise.then(data=>console.log("OK ",data), 
+                error=> (console.log("error ",error),"Hello"))
+            .then(msg=> console.log("Mesage ",msg));    
+    </script>
+</html>

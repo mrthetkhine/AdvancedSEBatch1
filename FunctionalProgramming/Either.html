@@ -1,0 +1,76 @@
+<html>
+    <script>
+     
+     
+
+     let Nothing = (x)=>({
+         map: function(fn)
+         {
+             return Nothing(x);
+         },
+         value()
+         {
+             return x;
+         },
+
+     });
+     Nothing.of = (x) =>{
+         return Nothing(x);
+     }
+     let Some = (x)=>({
+         map: function(fn)
+         {
+             return Some(fn(x));
+         },
+         value()
+         {
+             return x;
+         },
+
+     });
+     Some.of = (x) =>{
+         return Some(x);
+     }
+     let nothing = Nothing(null);
+     nothing = nothing.map(x=>x * 2);
+     console.log('Nothing ',nothing.value());
+
+     let some = Some.of(10);
+     some = some.map(x=> 2*x);
+     console.log('Some ',some.value());
+
+     const Either = {
+         Some,
+         Nothing
+     };
+
+     let toUpper =(str)=>str.toUpperCase();
+     let appendHi = (str)=>str +" hi";
+
+     function parseJson(str)
+     {
+         try
+         {
+             let json = JSON.parse(str);
+             return Some.of(json);
+         }
+         catch(e)
+         {
+            return Nothing.of(e);
+         }
+     }
+     let obj = {
+         name : "Tk",
+         age : 37
+     };
+     let json = parseJson(JSON.stringify(obj));
+     console.log('json ',json , 'value ',json.value());
+
+     json = parseJson("non json string");
+     console.log('json ',json , 'value ',json.value());
+
+     let result = json.map(obj=>obj.name)
+                       .map(name=> name.toUpperCase()); 
+     console.log('Result ',result.value());
+    </script>
+</html>

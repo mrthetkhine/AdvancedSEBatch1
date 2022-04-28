@@ -23,7 +23,10 @@
          isNothing()
          {
              return x === null || x===undefined;
-         }
+         },
+         join(){
+            return this.isNothing() ? MayBe.of(null) : x;
+        }
 
      });
      MayBe.of = (x) =>{
@@ -32,10 +35,19 @@
      let toUpper =(str)=>str.toUpperCase();
      let appendHi = (str)=>str +" hi";
 
-     let str = null;
+     let str = "Hello";
      let mayBeStr = MayBe(str);
      let result = mayBeStr.map(toUpper)
                           .map(appendHi);
      console.log('Value ',result.value());  
+     
+     let doubleMonad = MayBe.of(MayBe.of(5));
+     console.log('Double ',doubleMonad.join());
+
+     let outsideMayBe = MayBe.of(2);
+     let resultMonad = doubleMonad.map((outsideMayBe) => {
+        return outsideMayBe.map((value) => value + 4)
+     });
+     console.log(resultMonad.join().value());
     </script>
 </html>

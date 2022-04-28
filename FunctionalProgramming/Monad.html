@@ -1,0 +1,52 @@
+<html>
+    <script>
+     let arr = [20,[10]]; //[20,10]
+     console.log(arr.flatMap(x=>x)); 
+     
+
+     const compose = (...fns) => x => fns.reduceRight((y, f) => f(y), x);
+     const trace = label => value => {
+        console.log(`${ label }: ${ value }`);
+        return value;
+    };   
+    const label = 'API call composition';
+    // a => Promise(b)
+    const getUserById = id => id === 3 ?
+        Promise.resolve({ name: 'Kurt', role: 'Author' }) :
+        undefined
+    ;
+    //getUserById(2).then(x=> console.log('Given 2',x));
+    getUserById(3).then(x=> console.log('Given 3',x));
+    // b => Promise(c)
+    const hasPermission = ({ role }) => (
+        Promise.resolve(role === 'Author')
+    );
+    hasPermission({user:'Author',role:'Author'})
+        .then(permission=>console.log('Permission ',permission));
+    // Try to compose them. Warning: this will fail.
+    const authUser = compose(hasPermission, getUserById);
+    // Oops! Always false!
+    authUser(3).then(trace(label));
+    function specialCompose()
+    {
+        const composeM = chainMethod => (...ms) => (
+            ms.reduce((f, g) => x => g(x)[chainMethod](f))
+        );
+        const composePromises = composeM('then');
+        const label = 'API call composition';
+        // a => Promise(b)
+        const getUserById = id => id === 3 ?
+            Promise.resolve({ name: 'Kurt', role: 'Author' }) :
+            undefined
+        ;
+        // b => Promise(c)
+        const hasPermission = ({ role }) => (
+            Promise.resolve(role === 'Author')
+        );
+        // Compose the functions (this works!)
+        const authUser = composePromises(hasPermission, getUserById);
+        authUser(3).then(trace(label)); // true
+    }
+    specialCompose();
+    </script>
+</html>
