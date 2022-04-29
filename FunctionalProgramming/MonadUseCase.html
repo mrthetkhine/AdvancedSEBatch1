@@ -1,0 +1,26 @@
+<html>
+    <script>
+    function div(a,b)
+    {
+        if(b == 0)
+        {
+            return Promise.reject('Division by zero')
+        }
+        return Promise.resolve(a/b);
+    }
+    /*
+    div(10,0)
+        .then(result=> console.log('Result ',result),
+              error=>console.log('Error ',error))
+        .then(data=>console.log('Data ',data),
+            error=>console.log('error ',error))
+    */
+    //let double = (x )=> x* 2;
+    let double = (x)=>{throw Error("x")};
+    div(10,5)
+        .then(result=> double(result),
+              error=>console.log('Error ',error))
+        .then(data=>console.log('Data ',data),
+            error=>console.log('error ',error))
+    </script>
+</html>

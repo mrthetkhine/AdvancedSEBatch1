@@ -1,0 +1,28 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.28.0/ramda.js"></script>
+    <script>
+      function toUpper(str)
+      {
+         return str.toUpperCase();
+      }
+      function appendHi(str)
+      {
+          return str + " hi";
+      }
+      let newFunc = R.compose(toUpper,appendHi);
+      console.log("new Func ",newFunc("hello"));
+
+      console.log('Add ',R.add(1)(2));
+      const equalThree = R.equals(3);
+      console.log('Equals ',equalThree(3));
+      console.log('All ',R.all(equalThree)([3, 3, 3, 3]));
+
+      const lessThan0 = R.flip(R.lt)(0);
+      const lessThan2 = R.flip(R.lt)(2);
+      console.log(R.any(lessThan0)([1, 2])); //=> false
+      console.log(R.any(lessThan2)([1, 2])); //=> true
+
+      console.log('And true & true ',R.and(true,true));
+      console.log('And true & false ',R.and(true,false));
+    </script>
+</html>
