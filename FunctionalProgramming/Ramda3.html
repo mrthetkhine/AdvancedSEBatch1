@@ -1,0 +1,30 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.28.0/ramda.js"></script>
+    <script>
+      console.log('Apply ',R.ap([R.multiply(2), R.add(3)], [1,2,3]));
+
+      const lst = [1,2,3,4,5]; //average 3
+      console.log("Sum ",R.sum(lst));
+      console.log("Length ",R.length(lst));
+      const average = R.converge(R.divide, [R.sum, R.length]);
+      console.log("Average ", average(lst));
+
+      console.log('R.converge ', R.converge(console.log,[
+          ()=>1,
+          ()=>2,
+          ()=>3,
+      ])());
+        //[a,b] => [b,a]
+      let divideBy3 = R.flip(R.divide)(3);
+      console.log("Divide ", divideBy3(12));
+
+      console.log("Head ",R.head([1,2,3,4,5]));
+      console.log("tail ",R.tail([1,2,3,4,5]));
+
+      console.log("max ",R.tail([1,2,3,4,5]));
+      const diff = function(a, b) { return b-a; };
+      const maxNum = R.pipe(R.sort(diff),R.head);
+      console.log("Sort ",maxNum([4,2,7,5])); 
+
+    </script>
+</html>

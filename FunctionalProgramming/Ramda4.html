@@ -1,0 +1,40 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.28.0/ramda.js"></script>
+    <script>
+      let obj = {
+          name : "Tk",
+          age : 37,
+      };
+      let lst = [
+            {
+                name : "Tk",
+                age : 37,
+            },
+            {
+                name : "Aung Min",
+                age : 19,
+            },
+            {
+                name : "Myo Naing",
+                age : 50,
+            },
+            {
+                name : "Min Aung",
+                age : 50,
+            },
+      ];
+      const getAge = R.prop("age");
+      const sortByAge = R.sortBy(getAge);
+      console.log("R.prop ", sortByAge(lst));
+      const ageNameSort = R.sortWith([
+        R.descend(R.prop('age')),
+        R.ascend(R.prop('name'))
+        ]);
+       const ageOnly = R.pluck("age");
+       console.log("Sort ",ageOnly(ageNameSort(lst)));
+
+       const greaterThan40 = (obj) => obj.age > 40;
+       console.log("Count > 40 ",R.count(greaterThan40,lst));
+       console.log('Assoc ',R.assoc('c', 3, {a: 1, b: 2}));
+    </script>
+</html>

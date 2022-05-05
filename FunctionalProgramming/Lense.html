@@ -1,0 +1,24 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.28.0/ramda.js"></script>
+    <script>
+      const game = {
+        name: 'Keep Talking and Nobody Explodes',
+        genres: ['Puzzle', 'VR'],
+        /*
+        publisher: {
+            name: 'Steel Crate Games',
+            location: 'Ottawa, Canada'
+        }
+        */
+        
+    };
+    //console.log("Game publisher name ",game.publisher.name);
+    const name =  R.lensPath(['publisher', 'name']);
+    console.log("Name ",R.view(name,game));
+    let newGame = R.set(name,"Our Publisher Name",game);
+    console.log('New Game ',newGame);
+
+    const toUpper = (str)=>str.toUpperCase();
+    console.log('Over ',R.over(name, toUpper, newGame));
+    </script>
+</html>
