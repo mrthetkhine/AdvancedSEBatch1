@@ -1,0 +1,26 @@
+<html>  
+    <script>
+        function Stack()
+        {
+            let data =[];
+            let top  = -1;
+
+            function push(element)
+            {
+                data[++top] = element;
+            }
+            function pop()
+            {
+                return data[top--];
+            }
+            return{
+                push,
+                pop
+            };
+        }
+        let stack1 = Stack();
+        stack1.push(100);
+        stack1.top = -1;
+        console.log('Stack1.pop ',stack1.pop());
+    </script>
+</html>
