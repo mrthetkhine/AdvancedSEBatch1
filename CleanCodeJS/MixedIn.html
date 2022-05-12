@@ -1,0 +1,21 @@
+<html>
+    <script>
+
+    function Human(name)
+    {
+        this.name = name;
+        this.work = function()
+        {
+            console.log('Human work ',this.name);
+        }
+    }
+    let h = new Human("TK");
+    h.work();
+
+    let obj = {
+        name : "Someone"
+    };
+    h.work.apply(obj);
+  
+    </script>
+</html>
