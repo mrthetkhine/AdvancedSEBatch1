@@ -1,0 +1,45 @@
+<html>
+    <script>
+
+        function Parent(parentData)
+        {
+            this.parentData = parentData;
+
+            this.parentFunc= function()
+            {
+                console.log("Parent function ");
+            }
+        }
+        function ParentTwo(parentData)
+        {
+            this.parentData = parentData;
+
+            this.parentFunc= function()
+            {
+                console.log("Parent Two function ");
+            }
+        }
+        function Child(childData)
+        {
+            this.childData = childData;
+
+            this.display=function()
+            {
+                console.log('Parent data ',this.parentData);
+                console.log('Child data  ',this.childData);
+                this.parentFunc();
+            }
+        }
+        Child.prototype = new Parent([100]);
+        let obj1 = new Child("Child1 ");
+        obj1.parentData.push(200);
+
+        obj1.parentData = [400];
+    
+        obj1.display();
+
+        Child.prototype = new ParentTwo([100]);
+        let obj2 = new Child("Child 2 ");
+        obj2.display();
+    </script>
+</html>
