@@ -1,0 +1,6 @@
+@startuml
+Customer -> WebApp: Login
+Customer <-- WebApp: Login Response
+WebApp-> DB: getUserByName
+WebApp<--DB: response
+@enduml
