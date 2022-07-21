@@ -50,7 +50,18 @@ public class TestStack {
 		assertEquals(30, stack.peep());
 		assertEquals(2, stack.size());
 	}
-	
+	@Test
+	public void testPushWithMaxLimitShouldThrowStackOverflowException()
+	{
+		StackOverflowException exception = assertThrows(StackOverflowException.class, () -> {
+			for(int i=0;i< 11;i++)
+			{
+				stack.push(i);
+			}
+		    });
+	   
+		assertEquals("Stack is full", exception.getMessage());
+	}
 	@Test
 	public void testPeepShouldThrowStackEmptyExceptionWhenEmpty()
 	{
@@ -58,5 +69,47 @@ public class TestStack {
 	       stack.peep();
 	    });
 		assertEquals("Stack is empty", exception.getMessage());
+	}
+	@Test
+	public void testPeepShouldReturnTopElementWithoutChaningSize()
+	{
+		int element = 100;
+		stack.push(element);
+		
+		int returnedElement = stack.peep();
+		
+		assertEquals(returnedElement, element);
+		assertEquals(1, stack.size());
+		
+	}
+	@Test
+	public void testPopShouldThrowStackEmptyExceptionWhenEmpty()
+	{
+		StackEmptyException exception = assertThrows(StackEmptyException.class, () -> {
+	       stack.pop();
+	    });
+		assertEquals("Stack is empty", exception.getMessage());
+	}
+	@Test
+	public void testPopShouldReturnLastElementPushedAndChangeSize()
+	{
+		int element = 10;
+		stack.push(element);
+		
+		assertEquals(element, stack.pop());
+		assertEquals(0, stack.size());
+	}
+	@Test
+	public void testPushElementShouldReturnWithPopInOrder()
+	{
+		for(int i=0;i< 10; i++)
+		{
+			stack.push(i);
+		}
+		for(int i=9;i>=0; i--)
+		{
+			assertEquals(i, stack.pop());
+		}
+		assertEquals(0, stack.size());
 	}
 }
