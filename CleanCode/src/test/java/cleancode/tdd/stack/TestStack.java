@@ -3,6 +3,7 @@ package cleancode.tdd.stack;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 /*
  * Stack
@@ -20,16 +21,18 @@ import org.junit.jupiter.api.Test;
         return the size of stack.
 
  * */
+@DisplayName("Test Suite for Stack class")
 public class TestStack {
 
 	Stack stack = new Stack();
 	
+	@DisplayName("Empty stack size should be zero")
 	@Test
 	public void testEmptyStackShouldReturnZeroAsSize()
 	{
 		//No Act
 		//Assert
-		assertEquals(0, stack.size());
+		assertEquals(0, stack.size(),"Stack size should be zero when empty");
 	}
 	
 	@Test
