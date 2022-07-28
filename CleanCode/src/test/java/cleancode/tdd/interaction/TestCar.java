@@ -16,7 +16,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.anyString;
 
 @ExtendWith(MockitoExtension.class)
-public class TestCar {
+public class TestCar extends Engine{
+
+	boolean engineStarted = false;
+	
+	public void start() {
+		System.out.println("Engine start");
+		this.engineStarted = true;
+		
+	}
+	public int getMile()
+	{
+		return 100;
+	}
 
 	@Mock
 	Engine engine;
@@ -28,10 +40,11 @@ public class TestCar {
 	public void testWhenCarStartItShouldCalledEngineStart()
 	{
 		
-		Car car = new Car(engine);
+		Car car = new Car(this);
 		car.start();
 		
-		Mockito.verify(engine,times(1)).start();
+		assertEquals(true,this.engineStarted);
+		//Mockito.verify(engine,times(1)).start();
 		when(engine.getMile()).thenReturn(200);
 		
 		int mile = engine.getMile();
