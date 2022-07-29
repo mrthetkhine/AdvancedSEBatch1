@@ -3,7 +3,10 @@ package cleancode.tdd.mockito;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.atLeast;
+import static org.mockito.Mockito.atMost;
 import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 
 import java.util.ArrayList;
@@ -12,13 +15,19 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import cleancode.tdd.interaction.Car;
+import cleancode.tdd.interaction.Engine;
 import cleancode.tdd.stack.StackOverflowException;
-import cleancode.di.Engine;
+
 @ExtendWith(MockitoExtension.class)
 public class MockitoTest {
+	
+	@Mock
+	Engine engine;
 	@Test
 	public void testMockito()
 	{	
@@ -44,7 +53,7 @@ public class MockitoTest {
 		strList.add("two");
 		
 		Mockito.verify(strList).add("one");
-		Mockito.verify(strList).add(anyString());
+		//Mockito.verify(strList).add(anyString());
 		
 		assertEquals(2,strList.size());
 		
@@ -60,7 +69,7 @@ public class MockitoTest {
 		
 		mock.add("one");
 		//mock.add("two");
-		Mockito.verify(mock).add(argument);
+		Mockito.verify(mock,atLeast(1)).add(argument.capture());
 		
 		assertEquals("one",argument.getValue());
 	}
@@ -85,5 +94,31 @@ public class MockitoTest {
 			mock.start();
 		});
 		
+	}
+	@Test
+	public void testMethodCallAtLeast()
+	{
+		Engine engine = Mockito.mock(Engine.class);
+		Car car = new Car(engine);
+		car.start();
+		
+		Mockito.verify(engine,atLeast(1)).start();
+	}
+	@Test
+	public void testMethodCallNever()
+	{
+		Engine mock = Mockito.mock(Engine.class);
+		
+		Mockito.verify(mock,never()).start();
+	}
+	@Test
+	public void testMethodCallAtMost()
+	{
+		Engine engine = Mockito.mock(Engine.class);
+		
+		Car car = new Car(engine);
+		car.start();
+		
+		Mockito.verify(engine,atMost(1)).start();
 	}
 }

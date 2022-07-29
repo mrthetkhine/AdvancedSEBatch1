@@ -3,7 +3,7 @@ package cleancode.tdd.interaction;
 public class Car {
 	Engine engine;
 	
-	Car(Engine engine)
+	public Car(Engine engine)
 	{
 		this.engine = engine;
 	}
