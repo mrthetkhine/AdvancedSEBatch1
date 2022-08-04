@@ -3,6 +3,7 @@ package cleancode.tdd.stack;
 public class Stack {
 
 	private static final String STACK_IS_EMPTY = "Stack is empty";
+	private static final String STACK_FULL = "Stack is full";
 	private static final int START = -1;
 	private static final int SIZE = 10;
 	
@@ -15,8 +16,8 @@ public class Stack {
 
 	public void push(int i) throws StackOverflowException{
 		if(top== SIZE-1)
-		{
-			throw new StackOverflowException("Stack is full");
+		{	
+			throw new StackOverflowException(STACK_FULL);
 		}
 		data[++top] = i;
 	}

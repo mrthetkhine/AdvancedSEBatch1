@@ -28,6 +28,7 @@ public class MockitoTest {
 	
 	@Mock
 	Engine engine;
+	
 	@Test
 	public void testMockito()
 	{	
