@@ -14,30 +14,32 @@ public class Framework {
 		Field[] fields = clazz.getDeclaredFields();
 		for(Field field : fields)
 		{
-			
 			Annotation[] annotations = field.getAnnotations();
 			for(Annotation anno : annotations)
 			{
-				
-				if(anno instanceof NotNullOrEmpty)
+				checkNotNullOrEmpty(obj, field, anno);
+			}
+		}
+	}
+
+	private void checkNotNullOrEmpty(Object obj, Field field, Annotation anno) {
+		if(anno instanceof NotNullOrEmpty)
+		{
+			//System.out.println("Field " + field.getName() );
+			//System.out.println("Annotation "+anno);
+			NotNullOrEmpty notNullAnno = (NotNullOrEmpty)anno;
+			try {
+				String value = (String)field.get(obj);
+				if(value == null || value.isEmpty())
 				{
-					//System.out.println("Field " + field.getName() );
-					//System.out.println("Annotation "+anno);
-					NotNullOrEmpty notNullAnno = (NotNullOrEmpty)anno;
-					try {
-						String value = (String)field.get(obj);
-						if(value == null || value.isEmpty())
-						{
-							System.err.println(notNullAnno.message());
-						}
-					} catch (IllegalArgumentException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					System.err.println(notNullAnno.message());
 				}
+			} catch (IllegalArgumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 	}
