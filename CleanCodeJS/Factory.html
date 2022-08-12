@@ -1,0 +1,45 @@
+<html>
+    <script>
+
+       class Human
+       {
+            constructor(name)
+            {
+                this.name = name;
+                console.log("Human constructor");
+            }
+       }
+       class Teacher extends Human
+       {
+            constructor(name)
+            {
+                super(name);
+                console.log("Tacher constructor");
+            }
+       }
+       class Doctor extends Human
+       {
+            constructor(name)
+            {
+                super(name);
+                console.log("Doctor constructor");
+            }
+       }
+      
+       function create(type,name)
+       {
+            let mapping = {
+            "human": Human,
+            "teacher":Teacher,
+            "doctor":Doctor
+        };
+        return Reflect.construct(mapping[type],[name]);
+       }
+
+       let doctor = create("doctor","Tin Htun");
+       console.log("Doctor ",doctor);
+
+       let teacher = create("teacher","Maung Maung");
+        console.log("Doctor ",doctor);
+    </script>
+</html>
